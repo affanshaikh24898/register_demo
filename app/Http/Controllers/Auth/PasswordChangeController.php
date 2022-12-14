@@ -21,8 +21,7 @@ class PasswordChangeController extends Controller
                 'old_password' => 'required',
                 'new_password' => [
                     'required',
-                    'min:8',
-                    'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/'
+                    'min:8'
                 ],
             ]);
 

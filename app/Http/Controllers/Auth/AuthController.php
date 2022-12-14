@@ -1,7 +1,7 @@
 <?php
-  
+
 namespace App\Http\Controllers\Auth;
-  
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +10,7 @@ use App\Models\User;
 use Hash;
 use Storage;
 use File;
-  
+
 class AuthController extends Controller
 {
     /**
@@ -21,8 +21,8 @@ class AuthController extends Controller
     public function index()
     {
         return view('auth.login');
-    }  
-      
+    }
+
     /**
      * Write code on Method
      *
@@ -32,7 +32,7 @@ class AuthController extends Controller
     {
         return view('auth.registration');
     }
-      
+
     /**
      * Write code on Method
      *
@@ -44,23 +44,23 @@ class AuthController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-   
+
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             return redirect()->intended('dashboard')
                         ->withSuccess('You have Successfully loggedin');
         }
-  
+
         return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
     }
-      
+
     /**
      * Write code on Method
      *
      * @return response()
      */
     public function postRegistration(Request $request)
-    {  
+    {
         $request->validate([
             'username' => 'required',
             'fname' => 'required',
@@ -71,8 +71,7 @@ class AuthController extends Controller
             'gender' => 'required',
             'password' => [
                 'required',
-                'min:8',
-                'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/'
+                'min:8'
             ],
         ]);
 
@@ -81,13 +80,13 @@ class AuthController extends Controller
             $file = $request->file('image') ;
             $fileName = $file->getClientOriginalName() ;
             $destinationPath = public_path().'/image' ;
-            $file->move($destinationPath,$fileName); 
+            $file->move($destinationPath,$fileName);
             $data['image'] = $fileName;
         }
         $check = $this->create($data);
         return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
     }
-    
+
     /**
      * Write code on Method
      *
@@ -98,10 +97,10 @@ class AuthController extends Controller
         if(Auth::check()){
             return view('welcome');
         }
-  
+
         return redirect("login")->withSuccess('Opps! You do not have access');
     }
-    
+
     /**
      * Write code on Method
      *
@@ -120,7 +119,7 @@ class AuthController extends Controller
         'password' => Hash::make($data['password'])
       ]);
     }
-    
+
     /**
      * Write code on Method
      *
@@ -129,13 +128,13 @@ class AuthController extends Controller
     public function logout() {
         Session::flush();
         Auth::logout();
-  
+
         return Redirect('login');
     }
 
     public function profileUpdate(Request $request)
     {
-        
+
         $request->validate([
             'username' => 'required',
             'fname' => 'required',
@@ -146,7 +145,7 @@ class AuthController extends Controller
             'gender' => 'required',
         ]);
 
-        if($file = $request->hasFile('image')){ 
+        if($file = $request->hasFile('image')){
 
             $file = $request->file('image') ;
             $fileName = $file->getClientOriginalName() ;
@@ -162,7 +161,7 @@ class AuthController extends Controller
             $user->image = $fileName;
             $user->gender = $request['gender'];
             $user->save();
-        }  
+        }
         return back()->with('message','Profile Updated');
     }
 }
