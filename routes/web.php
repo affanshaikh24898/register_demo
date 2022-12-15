@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\PasswordChangeController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TournamentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,14 +27,15 @@ Route::get('/update', function () {
 });
 
 Route::resource('products', ProductController::class);
+Route::resource('tournaments', TournamentController::class);
 
 Route::get('login', [AuthController::class, 'index'])->name('login');
-Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
+Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
 Route::get('registration', [AuthController::class, 'registration'])->name('register');
-Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post'); 
-Route::get('dashboard', [AuthController::class, 'dashboard']); 
+Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
+Route::get('dashboard', [AuthController::class, 'dashboard']);
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-Route::post('profileUpdate', [AuthController::class, 'profileUpdate'])->name('profileUpdate'); 
+Route::post('profileUpdate', [AuthController::class, 'profileUpdate'])->name('profileUpdate');
 
 Route::get('/change-password', [PasswordChangeController::class, 'changePassword'])->name('change-password');
 Route::post('/change-password', [PasswordChangeController::class, 'updatePassword'])->name('update-password');
