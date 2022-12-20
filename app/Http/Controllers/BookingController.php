@@ -66,7 +66,7 @@ class BookingController extends Controller
 
         $request->validate([
             'name' => 'required',
-            //'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:users',
             'booking_type' => 'required',
             'booking_date' => 'required',
             'booking_slot' => 'required',
