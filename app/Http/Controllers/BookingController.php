@@ -34,7 +34,7 @@ class BookingController extends Controller
         if($fetch_count == 0){
             $request->validate([
                 'name' => 'required',
-               // 'email' => 'required|email|unique:users',
+                'email' => 'required|email|unique:users',
                 'booking_type' => 'required',
                 'booking_date' => 'required',
                 'booking_slot' => 'required',
@@ -105,7 +105,7 @@ class BookingController extends Controller
         if($fetch_count == 0){
             $request->validate([
                 'name' => 'required',
-               // 'email' => 'required|email|unique:users',
+                'email' => 'required|email|unique:users',
                 'booking_type' => 'required',
                 'booking_date' => 'required',
                 'booking_slot' => 'required',
@@ -137,7 +137,7 @@ class BookingController extends Controller
 
         $request->validate([
             'name' => 'required',
-           // 'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:users',
             'booking_type' => 'required',
             'booking_date' => 'required',
             'booking_slot' => 'required',
