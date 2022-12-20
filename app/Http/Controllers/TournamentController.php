@@ -107,3 +107,18 @@ class TournamentController extends Controller
                         ->with('success','Product deleted successfully');
     }
 }
+// for($i=1;$i<=5;$i++){
+//     $a=1;
+//     for($c=1;$c<=$i;$c++){
+//         if($a == 1){
+//          print $a;
+//          $a = 0;
+//         }else{
+//          print $a;
+//          $a = 1;
+//         }
+//     }
+//     echo "</br>";
+//     unset( $a );
+// }
+// die();
