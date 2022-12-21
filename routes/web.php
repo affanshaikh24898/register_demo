@@ -5,7 +5,6 @@ use App\Http\Controllers\Auth\PasswordChangeController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\TournamentController;
 use App\Http\Controllers\BookingController;
 
 /*
@@ -28,7 +27,6 @@ Route::get('/update', function () {
 });
 
 Route::resource('products', ProductController::class);
-Route::resource('tournaments', TournamentController::class);
 Route::resource('bookings', BookingController::class);
 
 Route::get('login', [AuthController::class, 'index'])->name('login');
