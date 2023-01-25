@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,7 @@ Route::get('/update', function () {
 
 Route::resource('products', ProductController::class);
 Route::resource('bookings', BookingController::class);
+Route::resource('users', UserController::class);
 
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
